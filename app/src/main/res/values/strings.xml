@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ChatForAndroid_2</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="input_placeholder">Write a message</string>
+</resources>
