@@ -18,12 +18,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView editTextILogin_id;
     TextView textViewPort;
     EditText editTextILogin;
-    public static String EXTRA_CHATWINDOW = "This is meant to be a chat ";
+    public static String EXTRA_LOGIN= "Login";
     String chatMessage = "This is chatMessage";
-    public static String loginString = "";
+    public  String loginString = "";
     //MemberData data = new MemberData("Login", "Green", "password");
-    List<MemberData> listOfMembers = new ArrayList<MemberData>();
-    MemberData data = listOfMembers.get(0);
+    //List<MemberData> listOfMembers = new ArrayList<MemberData>();
+    //MemberData data = listOfMembers.get(0);
     List<String> listOfLoginNames = new ArrayList<String>();
 
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void chatWindow(View v) {
         // Do something in response to button
         Intent intent = new Intent(this, ChatActivity.class);
-        intent.putExtra(EXTRA_CHATWINDOW, chatMessage);
+        intent.putExtra(EXTRA_LOGIN, loginString);
         startActivity(intent);
 
 
@@ -53,9 +53,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // do your code
                 // Client connects socket  to a foreign host with the connect button.
                 //Toast.makeText(getApplicationContext(),"Ok,connect works" ,Toast.LENGTH_SHORT).show();
-                chatWindow(v);
-                loginString = editTextILogin.getText().toString();
 
+                loginString = editTextILogin.getText().toString();
+                chatWindow(v);
     }
 }
 

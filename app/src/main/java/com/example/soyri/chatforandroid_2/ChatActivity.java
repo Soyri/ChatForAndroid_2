@@ -43,13 +43,15 @@ public class ChatActivity extends AppCompatActivity implements RoomListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         Intent intent = getIntent();
+
         ImageButton send_button = (ImageButton) findViewById(R.id.button_chat_box_send);
-        String message = intent.getStringExtra(MainActivity.EXTRA_CHATWINDOW);
+        String loginString = intent.getStringExtra(MainActivity.EXTRA_LOGIN);
         editText = (EditText) findViewById(R.id.chat_activity_editText_id);
         messageAdapter = new MessageAdapter(this);
         messagesView = (ListView) findViewById(R.id.messages_view);
         messagesView.setAdapter(messageAdapter);
-        MemberData data = new MemberData(MainActivity.loginString, getRandomColor());
+
+        MemberData data = new MemberData(loginString, getRandomColor());
 
         scaledrone = new Scaledrone(channelID, data);
         scaledrone.connect(new Listener() {
