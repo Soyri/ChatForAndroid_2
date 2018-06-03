@@ -9,29 +9,30 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    TextView textViewIPAddress;
+    TextView editTextILogin_id;
     TextView textViewPort;
-    EditText editTextAddress;
+    EditText editTextILogin;
     public static String EXTRA_CHATWINDOW = "This is meant to be a chat ";
     String chatMessage = "This is chatMessage";
-    public String connectedIPAddress = "";
+    public static String loginString = "";
+    //MemberData data = new MemberData("Login", "Green", "password");
+    List<MemberData> listOfMembers = new ArrayList<MemberData>();
+    MemberData data = listOfMembers.get(0);
+    List<String> listOfLoginNames = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        textViewIPAddress = (TextView) findViewById(R.id.textViewIPAddress_id);
-        textViewPort = (TextView) findViewById(R.id.textViewPort_id);
-        Button listen_button = (Button) findViewById(R.id.button_listen_id);
-        listen_button.setOnClickListener(this); // calling onClick() method
-        Button connect_button = (Button) findViewById(R.id.button_connect_id);
-        connect_button.setOnClickListener(this);
-        editTextAddress = (EditText) findViewById(R.id.editTextIPAddress_id);
-    }
+        Button enterlogin_button = (Button) findViewById(R.id.button_enterlogin_id);
+        enterlogin_button.setOnClickListener(this); // calling onClick() method
+        editTextILogin = (EditText) findViewById(R.id.editTextLogin_id);   }
 
 
     /** Called when the user taps the Connect button */
@@ -44,28 +45,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    //Called when user pairs login with password
+
     @Override
     public void onClick(View v) {
         // default method for handling onClick Events..
-        switch (v.getId()) {
-
-            case R.id.button_listen_id:
-                // do your code
-                //Server uses listen to alert the TCP/IP machine of the willingness to accept connections.
-                textViewPort.setText("Hail Cthulhu!");
-                Toast.makeText(getApplicationContext(),"Ok,listen works" ,Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.button_connect_id:
                 // do your code
                 // Client connects socket  to a foreign host with the connect button.
                 //Toast.makeText(getApplicationContext(),"Ok,connect works" ,Toast.LENGTH_SHORT).show();
                 chatWindow(v);
-                connectedIPAddress = editTextAddress.getText().toString();
-                break;
+                loginString = editTextILogin.getText().toString();
 
-            default:
-                break;
-        }
     }
 }
+

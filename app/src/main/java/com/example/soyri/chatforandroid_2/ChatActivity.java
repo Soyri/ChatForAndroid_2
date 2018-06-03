@@ -37,6 +37,7 @@ public class ChatActivity extends AppCompatActivity implements RoomListener {
     private MessageAdapter messageAdapter;
     private ListView messagesView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class ChatActivity extends AppCompatActivity implements RoomListener {
         messageAdapter = new MessageAdapter(this);
         messagesView = (ListView) findViewById(R.id.messages_view);
         messagesView.setAdapter(messageAdapter);
-        MemberData data = new MemberData(getRandomName(), getRandomColor());
+        MemberData data = new MemberData(MainActivity.loginString, getRandomColor());
 
         scaledrone = new Scaledrone(channelID, data);
         scaledrone.connect(new Listener() {
@@ -152,6 +153,11 @@ class MemberData {
     private String name;
     private String color;
 
+
+
+    //private String login;
+    private String password;
+
     public MemberData(String name, String color) {
         this.name = name;
         this.color = color;
@@ -160,8 +166,18 @@ class MemberData {
     public MemberData() {
     }
 
+    public MemberData(String name, String color, String password) {
+        this.name = name;
+        this.color = color;
+        this.password = password;
+    }
+
+
     public String getName() {
         return name;
+    }
+    public String getPassword() {
+        return password;
     }
 
     public String getColor() {
@@ -175,4 +191,8 @@ class MemberData {
                 ", color='" + color + '\'' +
                 '}';
     }
+
+
+
+
 }
